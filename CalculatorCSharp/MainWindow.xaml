@@ -1,0 +1,67 @@
+﻿<Window x:Class="CalculatorCSharp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculatorCSharp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="295" Width="366" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="btTemplate">
+            <Border x:Name="buttonBorder" CornerRadius="5"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Background="{TemplateBinding Background}"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}" >
+                <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="true">
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="buttonBorder" Property="Background" Value="Azure" />
+                    <Setter TargetName="buttonBorder" Property="BorderBrush" Value="DarkBlue" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter TargetName="buttonBorder" Property="Background" Value="LightGray"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid Margin="0,0,12,11">
+        <Button x:Name="btnDigit0" HorizontalAlignment="Left" Margin="89,212,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDigit_Click" Background="{x:Null}">0
+        </Button>
+        <Button x:Name="btnDigit2" Template="{StaticResource btTemplate}" Content="2" HorizontalAlignment="Left" Margin="89,177,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDigit_Click" BorderThickness="1" Background="{x:Null}"/>
+        <Button x:Name="btnDigit1" Template="{StaticResource btTemplate}" Content="1" HorizontalAlignment="Left" Margin="54,177,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDigit_Click" Background="{x:Null}"/>
+        <Button x:Name="btnDigit5" Template="{StaticResource btTemplate}" Content="5" HorizontalAlignment="Left" Margin="89,142,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDigit_Click" Background="{x:Null}"/>
+        <Button x:Name="btnDigit3" Template="{StaticResource btTemplate}" Content="3" HorizontalAlignment="Left" Margin="124,177,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDigit_Click" Background="{x:Null}"/>
+        <Button x:Name="btnDigit4" Template="{StaticResource btTemplate}" Content="4" HorizontalAlignment="Left" Margin="54,142,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDigit_Click" Background="{x:Null}"/>
+        <Button x:Name="btnDigit6" Template="{StaticResource btTemplate}" Content="6" HorizontalAlignment="Left" Margin="124,142,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDigit_Click" Background="{x:Null}"/>
+        <Button x:Name="btnDigit8" Template="{StaticResource btTemplate}" Content="8" HorizontalAlignment="Left" Margin="89,107,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDigit_Click" Background="{x:Null}"/>
+        <Button x:Name="btnDigit7" Template="{StaticResource btTemplate}" Content="7" HorizontalAlignment="Left" Margin="54,107,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDigit_Click" Background="{x:Null}"/>
+        <Button x:Name="btnDigit9" Template="{StaticResource btTemplate}" Content="9" HorizontalAlignment="Left" Margin="124,107,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDigit_Click" Background="{x:Null}"/>
+        <Button x:Name="btnDot" Template="{StaticResource btTemplate}" Content="," HorizontalAlignment="Left" Margin="124,212,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDot_Click" Background="{x:Null}" />
+        <Button x:Name="btnSum" Template="{StaticResource btTemplate}" Content="+" HorizontalAlignment="Left" Margin="159,177,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnArithOp_Click" Background="{x:Null}"/>
+        <Button x:Name="btnSub" Template="{StaticResource btTemplate}" Content="-" HorizontalAlignment="Left" Margin="159,142,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnArithOp_Click" Background="{x:Null}"/>
+        <Button x:Name="btnMul" Template="{StaticResource btTemplate}" Content="*" HorizontalAlignment="Left" Margin="159,107,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnArithOp_Click" Background="{x:Null}"/>
+        <Button x:Name="btnResult" Template="{StaticResource btTemplate}" Content="=" HorizontalAlignment="Left" Margin="159,212,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnResult_Click" Background="{x:Null}"/>
+        <Button x:Name="btnNegative" Template="{StaticResource btTemplate}" Content="+/-" HorizontalAlignment="Left" Margin="54,212,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnNegative_Click" Background="{x:Null}"/>
+        <TextBox x:Name="txtBoxDisplay" HorizontalAlignment="Left" Height="23" Margin="54,44,0,0" Text="0" VerticalAlignment="Top" Width="135" IsReadOnly="True" MaxLines="1" MinLines="1" TextAlignment="Right" Background="White"/>
+        <Button x:Name="btnClean" Template="{StaticResource btTemplate}" Content="C" HorizontalAlignment="Left" Margin="89,72,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnClean_Click" Background="{x:Null}"/>
+        <Button x:Name="btnCleanEntry" Template="{StaticResource btTemplate}" Content="CE" HorizontalAlignment="Left" Margin="54,72,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnCleanEntry_Click" Background="{x:Null}"/>
+        <Button x:Name="btnBckSpc" Template="{StaticResource btTemplate}" Content="" HorizontalAlignment="Left" Margin="124,72,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnBckSpc_Click" Background="{x:Null}"/>
+        <Button x:Name="btnDiv" Template="{StaticResource btTemplate}" Content="/" HorizontalAlignment="Left" Margin="159,72,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnArithOp_Click" Background="{x:Null}"/>
+        <TextBlock x:Name="txtBlockShow" HorizontalAlignment="Left" Height="18" Margin="54,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" TextAlignment="Right"/>
+        <Button x:Name="btnSqr" Template="{StaticResource btTemplate}" Content="x^2" HorizontalAlignment="Left" Margin="19,177,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnSqr_Click" Background="{x:Null}"/>
+        <Button x:Name="btnCube" Template="{StaticResource btTemplate}" Content="x^3" HorizontalAlignment="Left" Margin="19,142,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnCube_Click" Background="{x:Null}"/>
+        <Button x:Name="btnSqrt" Template="{StaticResource btTemplate}" Content="√" HorizontalAlignment="Left" Margin="19,107,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnSqrt_Click" Background="{x:Null}"/>
+        <Button x:Name="btnDivX" Template="{StaticResource btTemplate}" Content="1/x" HorizontalAlignment="Left" Margin="19,212,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDivX_Click" Background="{x:Null}"/>
+
+    </Grid>
+</Window>
