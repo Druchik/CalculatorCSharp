@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CalculatorCSharp"
         mc:Ignorable="d"
         Title="MainWindow" Height="295" Width="366" WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -62,6 +61,5 @@
         <Button x:Name="btnCube" Template="{StaticResource btTemplate}" Content="x^3" HorizontalAlignment="Left" Margin="19,142,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnCube_Click" Background="{x:Null}"/>
         <Button x:Name="btnSqrt" Template="{StaticResource btTemplate}" Content="√" HorizontalAlignment="Left" Margin="19,107,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnSqrt_Click" Background="{x:Null}"/>
         <Button x:Name="btnDivX" Template="{StaticResource btTemplate}" Content="1/x" HorizontalAlignment="Left" Margin="19,212,0,0" VerticalAlignment="Top" Width="30" Height="30" RenderTransformOrigin="0,0" Click="BtnDivX_Click" Background="{x:Null}"/>
-
     </Grid>
 </Window>

@@ -14,18 +14,24 @@ namespace CalculatorCSharp
             InitializeComponent();
         }
 
+        const string ZERO = "0";
         double firstNum;
         double secNum;
         double result;
         string arithOp;
         bool isResult = false;
 
+        /// <summary>
+        /// Нажатие на кнопку с цифрами
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnDigit_Click(object sender, RoutedEventArgs e)
         {
             Button numbers = sender as Button;
             if (!isResult)
             {
-                if (txtBoxDisplay.Text == "0")
+                if (txtBoxDisplay.Text == ZERO)
                 {
                     txtBoxDisplay.Text = numbers.Content.ToString();
                 }
@@ -42,29 +48,49 @@ namespace CalculatorCSharp
             }
         }
 
+        /// <summary>
+        /// Нажатие на кнопку Backspace
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnBckSpc_Click(object sender, RoutedEventArgs e)
         {
-            txtBoxDisplay.Text = txtBoxDisplay.Text.Length >= 1 ? txtBoxDisplay.Text.Remove(txtBoxDisplay.Text.Length - 1, 1) : "0";
+            txtBoxDisplay.Text = txtBoxDisplay.Text.Length >= 1 ? txtBoxDisplay.Text.Remove(txtBoxDisplay.Text.Length - 1, 1) : ZERO;
             if (txtBoxDisplay.Text.Length == 0)
-                txtBoxDisplay.Text = "0";
+                txtBoxDisplay.Text = ZERO;
         }
 
+        /// <summary>
+        /// Нажатие на кнопку cancel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnClean_Click(object sender, RoutedEventArgs e)
         {
             firstNum = 0;
             secNum = 0;
             result = 0;
-            txtBoxDisplay.Text = "0";
+            txtBoxDisplay.Text = ZERO;
             txtBlockShow.Text = "";
             arithOp = "";
             isResult = false;
         }
 
+        /// <summary>
+        /// Нажатие на кнопку CE
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnCleanEntry_Click(object sender, RoutedEventArgs e)
         {
-            txtBoxDisplay.Text = "0";
+            txtBoxDisplay.Text = ZERO;
         }
 
+        /// <summary>
+        /// Нажатие на кнопку арифметичемких операций (+, -, *, /)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnArithOp_Click(object sender, RoutedEventArgs e)
         {
             Button op = sender as Button;
@@ -74,6 +100,11 @@ namespace CalculatorCSharp
             isResult = true;
         }
 
+        /// <summary>
+        /// Нажатие на кнопку ","
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnDot_Click(object sender, RoutedEventArgs e)
         {
             if(!txtBoxDisplay.Text.Contains(","))
@@ -82,6 +113,11 @@ namespace CalculatorCSharp
             }
         }
 
+        /// <summary>
+        /// Нажатие на кнопку "+/-"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnNegative_Click(object sender, RoutedEventArgs e)
         {
             if (!txtBoxDisplay.Text.Contains("-"))
@@ -94,6 +130,11 @@ namespace CalculatorCSharp
             }
         }
 
+        /// <summary>
+        /// Нажатие на кнопку "="
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnResult_Click(object sender, RoutedEventArgs e)
         {
             if (!isResult)
@@ -127,7 +168,7 @@ namespace CalculatorCSharp
             }
             else if (arithOp == "/")
             {
-                if (txtBoxDisplay.Text == "0")
+                if (txtBoxDisplay.Text == ZERO)
                 {
                     MessageBox.Show("Деление на ноль!!!");
                 }
@@ -143,6 +184,11 @@ namespace CalculatorCSharp
             }
         }
 
+        /// <summary>
+        /// Нажатие на кнопку квю корня
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSqrt_Click(object sender, RoutedEventArgs e)
         {
             if (!txtBoxDisplay.Text.Contains("-"))
@@ -159,6 +205,11 @@ namespace CalculatorCSharp
             }
         }
 
+        /// <summary>
+        /// Нажатие на кнопку возведения в квадрат
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSqr_Click(object sender, RoutedEventArgs e)
         {
             firstNum = double.Parse(txtBoxDisplay.Text);
@@ -168,6 +219,11 @@ namespace CalculatorCSharp
             isResult = true;
         }
 
+        /// <summary>
+        /// Нажатие на кнопку возведения в третью степень
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnCube_Click(object sender, RoutedEventArgs e)
         {
             firstNum = double.Parse(txtBoxDisplay.Text);
@@ -177,9 +233,14 @@ namespace CalculatorCSharp
             isResult = true;
         }
 
+        /// <summary>
+        /// Нажатие на кнопку "1/x"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnDivX_Click(object sender, RoutedEventArgs e)
         {
-            if (txtBoxDisplay.Text == "0")
+            if (txtBoxDisplay.Text == ZERO)
             {
                 MessageBox.Show("Деление на ноль!!!");
             }
