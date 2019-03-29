@@ -9,10 +9,7 @@ namespace CalculatorCSharp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        public MainWindow() => InitializeComponent();
 
         const string ZERO = "0";
         double firstNum;
@@ -81,10 +78,7 @@ namespace CalculatorCSharp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnCleanEntry_Click(object sender, RoutedEventArgs e)
-        {
-            txtBoxDisplay.Text = ZERO;
-        }
+        private void BtnCleanEntry_Click(object sender, RoutedEventArgs e) => txtBoxDisplay.Text = ZERO;
 
         /// <summary>
         /// Нажатие на кнопку арифметичемких операций (+, -, *, /)
