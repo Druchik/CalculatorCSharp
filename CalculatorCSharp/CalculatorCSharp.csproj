@@ -54,6 +54,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cmds\BtnArithOpClickCommand.cs" />
+    <Compile Include="Cmds\BtnBckSpcClickCommand.cs" />
+    <Compile Include="Cmds\BtnCleanClickCommand.cs" />
+    <Compile Include="Cmds\BtnCleanEntryClickCommand.cs" />
+    <Compile Include="Cmds\BtnCubeClickCommand.cs" />
+    <Compile Include="Cmds\BtnDigitClickCommand.cs" />
+    <Compile Include="Cmds\BtnDivXClickCommand.cs" />
+    <Compile Include="Cmds\BtnDotClickCommand.cs" />
+    <Compile Include="Cmds\BtnNegativeClickCommand.cs" />
+    <Compile Include="Cmds\BtnPercentClickCommand.cs" />
+    <Compile Include="Cmds\BtnResultClickCommand.cs" />
+    <Compile Include="Cmds\BtnSqrClickCommand.cs" />
+    <Compile Include="Cmds\BtnSqrtClickCommand.cs" />
+    <Compile Include="ViewModel\MainVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,12 +76,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Cmds\CommandBase.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -93,5 +109,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
