@@ -8,6 +8,7 @@ namespace CalculatorCSharp.Cmds
     class BtnSqrtClickCommand : CommandBase
     {
         private Data _data;
+        private int _pos = 0;
         private IList<string> _journal;
         public BtnSqrtClickCommand(Data data, IList<string> journal)
         {
@@ -23,7 +24,7 @@ namespace CalculatorCSharp.Cmds
             {
                 _data.FirstNum = double.Parse(_data.Display);
                 _data.Display = Math.Sqrt(_data.FirstNum).ToString();
-                _journal.Add($"sqrt({_data.FirstNum}) = {_data.Display}");
+                _journal.Insert(_pos, $"sqrt({_data.FirstNum}) = {_data.Display}");
                 _data.Hint = $"sqrt({_data.FirstNum})";
                 _data.IsResult = true;
             }

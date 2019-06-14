@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cmds\AddMemoryCommand.cs" />
     <Compile Include="Cmds\BtnArithOpClickCommand.cs" />
     <Compile Include="Cmds\BtnBckSpcClickCommand.cs" />
     <Compile Include="Cmds\BtnCleanClickCommand.cs" />
@@ -67,6 +68,10 @@
     <Compile Include="Cmds\BtnResultClickCommand.cs" />
     <Compile Include="Cmds\BtnSqrClickCommand.cs" />
     <Compile Include="Cmds\BtnSqrtClickCommand.cs" />
+    <Compile Include="Cmds\ClearMemoryCommand.cs" />
+    <Compile Include="Cmds\ReadMemoryCommand.cs" />
+    <Compile Include="Cmds\SaveMemoryCommand.cs" />
+    <Compile Include="Cmds\SubMemoryCommand.cs" />
     <Compile Include="ViewModel\MainVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

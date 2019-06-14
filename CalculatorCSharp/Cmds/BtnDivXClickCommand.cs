@@ -7,6 +7,7 @@ namespace CalculatorCSharp.Cmds
     class BtnDivXClickCommand : CommandBase
     {
         private Data _data;
+        private int _pos = 0;
         private IList<string> _journal;
         public BtnDivXClickCommand(Data data, IList<string> journal)
         {
@@ -26,7 +27,7 @@ namespace CalculatorCSharp.Cmds
             {
                 _data.FirstNum = double.Parse(_data.Display);
                 _data.Display = (1 / _data.FirstNum).ToString();
-                _journal.Add($"1/{_data.FirstNum} = {_data.Display}");
+                _journal.Insert(_pos, $"1/{_data.FirstNum} = {_data.Display}");
                 _data.Hint = $"1/{_data.FirstNum}";
                 _data.IsResult = true;
             }

@@ -9,6 +9,7 @@ namespace CalculatorCSharp.Model
         double _firstNum;
         double _secNum;
         double _result;
+        double _memory = 0;
         string _arithOp;
         string _hint;
         bool _isResult = false;
@@ -84,6 +85,17 @@ namespace CalculatorCSharp.Model
             {
                 _hint = value;
                 OnPropertyChanged("Hint");
+            }
+        }
+
+        public double Memory
+        {
+            get => _memory;
+
+            set
+            {
+                _memory = value;
+                OnPropertyChanged("Memory");
             }
         }
 

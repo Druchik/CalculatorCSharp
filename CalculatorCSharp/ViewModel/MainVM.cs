@@ -14,6 +14,8 @@ namespace CalculatorCSharp.ViewModel
 
         public IList<string> Journal { get; set; }
 
+        public IList<string> MemoryList { get; set; }
+
         private Data _data = new Data();
 
         public Data Data
@@ -29,6 +31,7 @@ namespace CalculatorCSharp.ViewModel
         public MainVM()
         {
             Journal = new ObservableCollection<string>();
+            MemoryList = new ObservableCollection<string>();
         }
 
         private ICommand _btnDigitClickCommand = null;
@@ -70,6 +73,20 @@ namespace CalculatorCSharp.ViewModel
         private ICommand _btnPercentClickCommand = null;
         public ICommand BtnPercentClickCmd => _btnPercentClickCommand ?? (_btnPercentClickCommand = new BtnPercentClickCommand(Data));
 
+        private ICommand _addMemoryCommand = null;
+        public ICommand AddMemoryCmd => _addMemoryCommand ?? (_addMemoryCommand = new AddMemoryCommand(Data, MemoryList));
+
+        private ICommand _clearMemoryCommand = null;
+        public ICommand ClearMemoryCmd => _clearMemoryCommand ?? (_clearMemoryCommand = new ClearMemoryCommand(Data, MemoryList));
+
+        private ICommand _readMemoryCommand = null;
+        public ICommand ReadMemoryCmd => _readMemoryCommand ?? (_readMemoryCommand = new ReadMemoryCommand(Data, MemoryList));
+
+        private ICommand _subMemoryCommand = null;
+        public ICommand SubMemoryCmd => _subMemoryCommand ?? (_subMemoryCommand = new SubMemoryCommand(Data, MemoryList));
+
+        private ICommand _saveMemoryCommand = null;
+        public ICommand SaveMemoryCmd => _saveMemoryCommand ?? (_saveMemoryCommand = new SaveMemoryCommand(Data, MemoryList));
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

@@ -7,7 +7,7 @@ namespace CalculatorCSharp.Cmds
     class BtnResultClickCommand : CommandBase
     {
         private Data _data;
-
+        private int _pos = 0;
         private IList<string> _journal;
 
         public BtnResultClickCommand(Data data, IList<string> journal)
@@ -37,7 +37,7 @@ namespace CalculatorCSharp.Cmds
             _data.Result = _data.FirstNum + _data.SecNum;
             _data.Display = _data.Result.ToString();
             _data.Hint = "";
-            _journal.Add($"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
+            _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
             _data.FirstNum = _data.Result;
             _data.IsResult = true;
 
@@ -48,7 +48,7 @@ namespace CalculatorCSharp.Cmds
             _data.Result = _data.FirstNum - _data.SecNum;
             _data.Display = _data.Result.ToString();
             _data.Hint = "";
-            _journal.Add($"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
+            _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
             _data.FirstNum = _data.Result;
             _data.IsResult = true;
         }
@@ -58,7 +58,7 @@ namespace CalculatorCSharp.Cmds
             _data.Result = _data.FirstNum * _data.SecNum;
             _data.Display = _data.Result.ToString();
             _data.Hint = "";
-            _journal.Add($"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
+            _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
             _data.FirstNum = _data.Result;
             _data.IsResult = true;
 
@@ -75,7 +75,7 @@ namespace CalculatorCSharp.Cmds
                 _data.Result = _data.FirstNum / _data.SecNum;
                 _data.Display = _data.Result.ToString();
                 _data.Hint = "";
-                _journal.Add($"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
+                _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
                 _data.FirstNum = _data.Result;
                 _data.IsResult = true;
             }

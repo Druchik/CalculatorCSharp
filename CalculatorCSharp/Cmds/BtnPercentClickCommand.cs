@@ -16,6 +16,7 @@ namespace CalculatorCSharp.Cmds
         {
             var percent = double.Parse(_data.Display);
             _data.Display = (percent / 100).ToString();
+            _data.IsResult = true;
         }
     }
 }

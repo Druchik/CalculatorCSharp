@@ -7,6 +7,7 @@ namespace CalculatorCSharp.Cmds
     class BtnSqrClickCommand : CommandBase
     {
         private Data _data;
+        private int _pos = 0;
         private IList<string> _journal;
         public BtnSqrClickCommand(Data data, IList<string> journal)
         {
@@ -20,7 +21,7 @@ namespace CalculatorCSharp.Cmds
         {
             _data.FirstNum = double.Parse(_data.Display);
             _data.Display = Math.Pow(_data.FirstNum, 2).ToString();
-            _journal.Add($"sqr({_data.FirstNum}) = {_data.Display}");
+            _journal.Insert(_pos, $"sqr({_data.FirstNum}) = {_data.Display}");
             _data.Hint = $"sqr({_data.FirstNum})";
             _data.IsResult = true;
         }

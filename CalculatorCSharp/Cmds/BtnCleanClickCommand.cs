@@ -5,6 +5,7 @@ namespace CalculatorCSharp.Cmds
     class BtnCleanClickCommand : CommandBase
     {
         private Data _data;
+        private int i = 0;
         public BtnCleanClickCommand(Data data)
         {
             _data = data;
@@ -14,10 +15,10 @@ namespace CalculatorCSharp.Cmds
 
         public override void Execute(object parameter)
         {
-            _data.FirstNum = 0;
-            _data.SecNum = 0;
-            _data.Result = 0;
-            _data.Display = "0";
+            _data.FirstNum = i;
+            _data.SecNum = i;
+            _data.Result = i;
+            _data.Display = i.ToString();
             _data.Hint = "";
             _data.ArithOp = "";
             _data.IsResult = false;
