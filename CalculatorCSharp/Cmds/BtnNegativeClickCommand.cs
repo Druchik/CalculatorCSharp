@@ -10,19 +10,21 @@ namespace CalculatorCSharp.Cmds
             _data = data;
         }
 
-        public override bool CanExecute(object parameter) => true;
+        public override bool CanExecute(object parameter) => !_data.IsError;
 
         public override void Execute(object parameter)
         {
-            if (!_data.Display.Contains("-"))
+            if (_data.Display != "0")
             {
-                _data.Display = $"-{_data.Display}";
+                if (!_data.Display.Contains("-"))
+                {
+                    _data.Display = $"-{_data.Display}";
+                }
+                else
+                {
+                    _data.Display = _data.Display.Remove(0, 1);
+                }
             }
-            else
-            {
-                _data.Display = _data.Display.Remove(0, 1);
-            }
-
         }
     }
 }

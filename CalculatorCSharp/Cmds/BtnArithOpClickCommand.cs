@@ -11,7 +11,7 @@ namespace CalculatorCSharp.Cmds
             _data = data;
         }
 
-        public override bool CanExecute(object parameter) => true;
+        public override bool CanExecute(object parameter) => !_data.IsError;
 
         public override void Execute(object parameter)
         {

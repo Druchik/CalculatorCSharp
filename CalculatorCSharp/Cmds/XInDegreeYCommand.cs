@@ -1,11 +1,16 @@
 ﻿using CalculatorCSharp.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CalculatorCSharp.Cmds
 {
-    class BtnPercentClickCommand : CommandBase
+    class XInDegreeYCommand : CommandBase
     {
         private Data _data;
-        public BtnPercentClickCommand(Data data)
+        public XInDegreeYCommand(Data data)
         {
             _data = data;
         }
@@ -14,8 +19,9 @@ namespace CalculatorCSharp.Cmds
 
         public override void Execute(object parameter)
         {
-            var percent = double.Parse(_data.Display);
-            _data.Display = (percent / 100).ToString();
+            _data.FirstNum = double.Parse(_data.Display);
+            _data.Hint = $"{_data.FirstNum}^";
+            _data.ArithOp = "^";
             _data.IsResult = true;
         }
     }

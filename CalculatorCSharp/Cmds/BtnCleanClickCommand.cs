@@ -13,15 +13,18 @@ namespace CalculatorCSharp.Cmds
 
         public override bool CanExecute(object parameter) => true;
 
-        public override void Execute(object parameter)
+        public override void Execute(object parameter) => CleanData(_data, i);
+
+        public static void CleanData(Data data, int i)
         {
-            _data.FirstNum = i;
-            _data.SecNum = i;
-            _data.Result = i;
-            _data.Display = i.ToString();
-            _data.Hint = "";
-            _data.ArithOp = "";
-            _data.IsResult = false;
+            data.FirstNum = i;
+            data.SecNum = i;
+            data.Result = i;
+            data.Display = i.ToString();
+            data.Hint = "";
+            data.ArithOp = "";
+            data.IsResult = false;
+            data.IsError = false;
         }
     }
 }

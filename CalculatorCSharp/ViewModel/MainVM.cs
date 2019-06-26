@@ -73,6 +73,7 @@ namespace CalculatorCSharp.ViewModel
         private ICommand _btnPercentClickCommand = null;
         public ICommand BtnPercentClickCmd => _btnPercentClickCommand ?? (_btnPercentClickCommand = new BtnPercentClickCommand(Data));
 
+        #region Memory commands
         private ICommand _addMemoryCommand = null;
         public ICommand AddMemoryCmd => _addMemoryCommand ?? (_addMemoryCommand = new AddMemoryCommand(Data, MemoryList));
 
@@ -87,7 +88,49 @@ namespace CalculatorCSharp.ViewModel
 
         private ICommand _saveMemoryCommand = null;
         public ICommand SaveMemoryCmd => _saveMemoryCommand ?? (_saveMemoryCommand = new SaveMemoryCommand(Data, MemoryList));
+        #endregion
 
+        #region Menu
+        private ICommand _ingCalcCommand = null;
+        public ICommand IngCalcCmd => _ingCalcCommand ?? (_ingCalcCommand = new IngCalcCommand());
+
+        private ICommand _simpleCalcCommand = null;
+        public ICommand SimpleCalcCmd => _simpleCalcCommand ?? (_simpleCalcCommand = new SimpleCalcCommand());
+        #endregion
+
+        #region Ingeneering Calculator
+        private ICommand _sinCommand = null;
+        public ICommand SinCmd => _sinCommand ?? (_sinCommand = new SinCommand(Data, Journal));
+
+        private ICommand _cosCommand = null;
+        public ICommand CosCmd => _cosCommand ?? (_cosCommand = new CosCommand(Data, Journal));
+
+        private ICommand _tanCommand = null;
+        public ICommand TanCmd => _tanCommand ?? (_tanCommand = new TanCommand(Data, Journal));
+
+        private ICommand _logCommand = null;
+        public ICommand LogCmd => _logCommand ?? (_logCommand = new LogCommand(Data, Journal));
+
+        private ICommand _lnCommand = null;
+        public ICommand LnCmd => _lnCommand ?? (_lnCommand = new LnCommand(Data, Journal));
+        
+        private ICommand _factorialCommand = null;
+        public ICommand FactorialCmd => _factorialCommand ?? (_factorialCommand = new FactorialCommand(Data, Journal));
+
+        private ICommand _expInDegreeXCommand = null;
+        public ICommand ExpInDegreeXCmd => _expInDegreeXCommand ?? (_expInDegreeXCommand = new ExpInDegreeXCommand(Data, Journal));
+
+        private ICommand _tenInDegreeXCommand = null;
+        public ICommand TenInDegreeXCmd => _tenInDegreeXCommand ?? (_tenInDegreeXCommand = new TenInDegreeXCommand(Data, Journal));
+
+        private ICommand _xInDegreeYCommand = null;
+        public ICommand XInDegreeYCmd => _xInDegreeYCommand ?? (_xInDegreeYCommand = new XInDegreeYCommand(Data));
+
+        private ICommand _xInYRootCommand = null;
+        public ICommand XInYRootCmd => _xInYRootCommand ?? (_xInYRootCommand = new XInYRootCommand(Data));
+
+        
+        #endregion
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (PropertyChanged != null)

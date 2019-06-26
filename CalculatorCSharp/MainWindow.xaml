@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="366" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="600" Width="1100" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
         <ControlTemplate TargetType="Button" x:Key="btTemplate">
             <Border x:Name="buttonBorder" CornerRadius="5"
@@ -33,94 +33,158 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </Window.Resources>
+
     <Grid x:Name="Calc" Margin="5,5,5,5">
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="btnDigit0" Grid.Column="2" Grid.Row="7" Template="{StaticResource btTemplate}" Content="0" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit0}"/>
-        <Button x:Name="btnDigit2" Grid.Column="2" Grid.Row="6" Template="{StaticResource btTemplate}" Content="2" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit2}"/>
-        <Button x:Name="btnDigit1" Grid.Column="1" Grid.Row="6" Template="{StaticResource btTemplate}" Content="1" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit1}"/>
-        <Button x:Name="btnDigit5" Grid.Column="2" Grid.Row="5" Template="{StaticResource btTemplate}" Content="5" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit5}"/>
-        <Button x:Name="btnDigit3" Grid.Column="3" Grid.Row="6" Template="{StaticResource btTemplate}" Content="3" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit3}"/>
-        <Button x:Name="btnDigit4" Grid.Column="1" Grid.Row="5" Template="{StaticResource btTemplate}" Content="4" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit4}"/>
-        <Button x:Name="btnDigit6" Grid.Column="3" Grid.Row="5" Template="{StaticResource btTemplate}" Content="6" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit6}"/>
-        <Button x:Name="btnDigit8" Grid.Column="2" Grid.Row="4" Template="{StaticResource btTemplate}" Content="8" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit8}"/>
-        <Button x:Name="btnDigit7" Grid.Column="1" Grid.Row="4" Template="{StaticResource btTemplate}" Content="7" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit7}"/>
-        <Button x:Name="btnDigit9" Grid.Column="3" Grid.Row="4" Template="{StaticResource btTemplate}" Content="9" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit9}"/>
-        <Button x:Name="btnDot" Grid.Column="3" Grid.Row="7" Template="{StaticResource btTemplate}" Content="," Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnDotClickCmd, ElementName=Calc}"/>
-        <Button x:Name="btnSum" Grid.Column="4" Grid.Row="6" Template="{StaticResource btTemplate}" Content="+" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnArithOpClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnSum}"/>
-        <Button x:Name="btnSub" Grid.Column="4" Grid.Row="5" Template="{StaticResource btTemplate}" Content="-" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnArithOpClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnSub}"/>
-        <Button x:Name="btnMul" Grid.Column="4" Grid.Row="4" Template="{StaticResource btTemplate}" Content="*" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnArithOpClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnMul}"/>
-        <Button x:Name="btnResult" Grid.Column="4" Grid.Row="7" Template="{StaticResource btTemplate}" Content="=" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnResultClickCmd, ElementName=Calc}"/>
-        <Button x:Name="btnNegative" Grid.Column="1" Grid.Row="7" Template="{StaticResource btTemplate}" Content="+/-" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnNegativeClickCmd, ElementName=Calc}"/>
-        <TextBox x:Name="txtBoxDisplay" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Height="23" Margin="5" HorizontalAlignment="Right" Width="135" 
-                 IsReadOnly="True" MaxLines="1" MinLines="1" TextAlignment="Right" Background="White" Text="{Binding Data.Display}"/>
-        <Button x:Name="btnClean" Grid.Column="2" Grid.Row="3" Template="{StaticResource btTemplate}" Content="C" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnCleanClickCmd, ElementName=Calc}"/>
-        <Button x:Name="btnCleanEntry" Grid.Column="1" Grid.Row="3" Template="{StaticResource btTemplate}" Content="CE" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnCleanEntryClickCmd, ElementName=Calc}"/>
-        <Button x:Name="btnBckSpc" Grid.Column="3" Grid.Row="3" Template="{StaticResource btTemplate}" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnBckSpcClickCmd, ElementName=Calc}" Content="&#xF0D5;" FontFamily="Wingdings"/>
-        <Button x:Name="btnDiv" Grid.Column="4" Grid.Row="3" Template="{StaticResource btTemplate}" Content="/" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnArithOpClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDiv}"/>
-        <TextBlock x:Name="txtBlockShow" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" Margin="0,5,5,0" HorizontalAlignment="Right" TextWrapping="Wrap" Width="135" TextAlignment="Right"
-                Text="{Binding Data.Hint}"/>
-        <Button x:Name="btnSqr" Grid.Column="0" Grid.Row="6" Template="{StaticResource btTemplate}" Content="x^2" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnSqrClickCmd, ElementName=Calc}"/>
-        <Button x:Name="btnCube" Grid.Column="0" Grid.Row="5" Template="{StaticResource btTemplate}" Content="x^3" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnCubeClickCmd, ElementName=Calc}"/>
-        <Button x:Name="btnSqrt" Grid.Column="0" Grid.Row="4" Template="{StaticResource btTemplate}" Content="√" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnSqrtClickCmd, ElementName=Calc}"/>
-        <Button x:Name="btnDivX" Grid.Column="0" Grid.Row="7" Template="{StaticResource btTemplate}" Content="1/x" Margin="3" Width="30" Height="30" 
-                Command="{Binding Path=DataContext.BtnDivXClickCmd, ElementName=Calc}"/>
-        <Button x:Name="btnPercent" Grid.Column="0" Grid.Row="3" Template="{StaticResource btTemplate}" Content="%" Margin="3" Width="30" Height="30"
-                Command="{Binding Path=DataContext.BtnPercentClickCmd, ElementName=Calc}"/>
-        <Button Grid.Column="0" Grid.Row="2" Template="{StaticResource btTemplate}" Content="MC" Margin="3" Width="30" Height="30"
+        <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <MenuItem Header="Калькулятор">
+                <MenuItem Header="Обычный" Command="{Binding Path=DataContext.SimpleCalcCmd, ElementName=Calc}"
+                          CommandParameter="{Binding ElementName=IngPanel}"/>
+                <MenuItem Header="Инженерный" Command="{Binding Path=DataContext.IngCalcCmd, ElementName=Calc}"
+                          CommandParameter="{Binding ElementName=IngPanel}"/>
+            </MenuItem>
+        </Menu>
+        <TextBlock x:Name="txtBlockShow" Grid.Column="0" Grid.Row="1" Margin="0,5,5,0" HorizontalAlignment="Right" TextWrapping="Wrap" Width="135" TextAlignment="Right"
+                Text="{Binding Data.Hint}" FontSize="16"/>
+        <TextBox x:Name="txtBoxDisplay" Grid.Column="0" Grid.Row="2" Margin="5" HorizontalAlignment="Right" 
+                 IsReadOnly="True" MaxLines="1" MinLines="1" TextAlignment="Right" Background="White" Text="{Binding Data.Display}" FontSize="38" BorderBrush="{x:Null}"/>
+        <StackPanel Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Orientation="Horizontal" Margin="5,5,0,5">
+            <Button Template="{StaticResource btTemplate}" Content="MC" Width="30" Height="30"
                 Command="{Binding Path=DataContext.ClearMemoryCmd, ElementName=Calc}"/>
-        <Button Grid.Column="1" Grid.Row="2" Template="{StaticResource btTemplate}" Content="MR" Margin="3" Width="30" Height="30"
+            <Button Template="{StaticResource btTemplate}" Content="MR" Width="30" Height="30"
                 Command="{Binding Path=DataContext.ReadMemoryCmd, ElementName=Calc}"/>
-        <Button Grid.Column="2" Grid.Row="2" Template="{StaticResource btTemplate}" Content="M+" Margin="3" Width="30" Height="30"
+            <Button Template="{StaticResource btTemplate}" Content="M+" Width="30" Height="30"
                 Command="{Binding Path=DataContext.AddMemoryCmd, ElementName=Calc}"/>
-        <Button Grid.Column="3" Grid.Row="2" Template="{StaticResource btTemplate}" Content="M-" Margin="3" Width="30" Height="30"
+            <Button Template="{StaticResource btTemplate}" Content="M-" Width="30" Height="30"
                 Command="{Binding Path=DataContext.SubMemoryCmd, ElementName=Calc}"/>
-        <Button Grid.Column="4" Grid.Row="2" Template="{StaticResource btTemplate}" Content="MS" Margin="3" Width="30" Height="30"
+            <Button Template="{StaticResource btTemplate}" Content="MS" Width="30" Height="30"
                 Command="{Binding Path=DataContext.SaveMemoryCmd, ElementName=Calc}"/>
-        <TabControl Grid.Column="5" Grid.Row="0" Grid.RowSpan="8" HorizontalAlignment="Left" Margin="5,5,0,-21" VerticalAlignment="Top" Width="155" Height="294">
-            <TabItem Header="Журнал">
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="4" VerticalAlignment="Top" MinHeight="47">
+            <Grid MinHeight="47">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Grid.Row="0" Template="{StaticResource btTemplate}" Content="%" Margin="3"
+                    Command="{Binding Path=DataContext.BtnPercentClickCmd, ElementName=Calc}" MinHeight="47" FontSize="18"/>
+                <Button Grid.Column="0" Grid.Row="1" Template="{StaticResource btTemplate}" Content="√" Margin="3"
+                    Command="{Binding Path=DataContext.BtnSqrtClickCmd, ElementName=Calc}" MinHeight="47" FontSize="18"/>
+                <Button Grid.Column="0" Grid.Row="2" Template="{StaticResource btTemplate}" Content="x^2" Margin="3"
+                    Command="{Binding Path=DataContext.BtnSqrClickCmd, ElementName=Calc}" MinHeight="47" FontSize="18"/>
+                <Button Grid.Column="0" Grid.Row="3" Template="{StaticResource btTemplate}" Content="x^3" Margin="3"
+                    Command="{Binding Path=DataContext.BtnCubeClickCmd, ElementName=Calc}" MinHeight="47" FontSize="18"/>
+                <Button Grid.Column="0" Grid.Row="4" Template="{StaticResource btTemplate}" Content="1/x" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDivXClickCmd, ElementName=Calc}" MinHeight="47" FontSize="18"/>
+                <StackPanel x:Name="IngPanel" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Visibility="Collapsed">
+                    <Grid MinHeight="50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" Grid.Row="0" Template="{StaticResource btTemplate}" Content="x^y" Margin="3"
+                            Command="{Binding Path=DataContext.XInDegreeYCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
+                        <Button Grid.Column="0" Grid.Row="1" Template="{StaticResource btTemplate}" Content="x√y" Margin="3"
+                                Command="{Binding Path=DataContext.XInYRootCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
+                        <Button Grid.Column="0" Grid.Row="2" Template="{StaticResource btTemplate}" Content="10^x" Margin="3"
+                                Command="{Binding Path=DataContext.TenInDegreeXCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
+                        <Button Grid.Column="0" Grid.Row="3" Template="{StaticResource btTemplate}" Content="e^x" Margin="3"
+                                Command="{Binding Path=DataContext.ExpInDegreeXCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
+                        <Button Grid.Column="0" Grid.Row="4" Template="{StaticResource btTemplate}" Content="n!" Margin="3"
+                            Command="{Binding Path=DataContext.FactorialCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
+                        <Button Grid.Column="1" Grid.Row="0" Template="{StaticResource btTemplate}" Content="sin" Margin="3"
+                            Command="{Binding Path=DataContext.SinCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
+                        <Button Grid.Column="1" Grid.Row="1" Template="{StaticResource btTemplate}" Content="cos" Margin="3"
+                                Command="{Binding Path=DataContext.CosCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
+                        <Button Grid.Column="1" Grid.Row="2" Template="{StaticResource btTemplate}" Content="tan" Margin="3"
+                                Command="{Binding Path=DataContext.TanCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
+                        <Button Grid.Column="1" Grid.Row="3" Template="{StaticResource btTemplate}" Content="log" Margin="3"
+                                Command="{Binding Path=DataContext.LogCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
+                        <Button Grid.Column="1" Grid.Row="4" Template="{StaticResource btTemplate}" Content="ln" Margin="3"
+                            Command="{Binding Path=DataContext.LnCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
+                    </Grid>
+                </StackPanel>
+
+                <Button x:Name="btnCleanEntry" Grid.Column="3" Grid.Row="0" Template="{StaticResource btTemplate}" Content="CE" Margin="3"
+                    Command="{Binding Path=DataContext.BtnCleanEntryClickCmd, ElementName=Calc}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnClean" Grid.Column="4" Grid.Row="0" Template="{StaticResource btTemplate}" Content="C" Margin="3"
+                    Command="{Binding Path=DataContext.BtnCleanClickCmd, ElementName=Calc}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnBckSpc" Grid.Column="5" Grid.Row="0" Template="{StaticResource btTemplate}" Margin="3"
+                    Command="{Binding Path=DataContext.BtnBckSpcClickCmd, ElementName=Calc}" Content="&#xF0D5;" FontFamily="Wingdings" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnDiv" Grid.Column="6" Grid.Row="0" Template="{StaticResource btTemplate}" Content="/" Margin="3"
+                    Command="{Binding Path=DataContext.BtnArithOpClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDiv}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnDigit7" Grid.Column="3" Grid.Row="1" Template="{StaticResource btTemplate}" Content="7" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit7}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnDigit8" Grid.Column="4" Grid.Row="1" Template="{StaticResource btTemplate}" Content="8" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit8}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnDigit9" Grid.Column="5" Grid.Row="1" Template="{StaticResource btTemplate}" Content="9" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit9}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnMul" Grid.Column="6" Grid.Row="1" Template="{StaticResource btTemplate}" Content="*" Margin="3"
+                    Command="{Binding Path=DataContext.BtnArithOpClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnMul}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnDigit6" Grid.Column="5" Grid.Row="2" Template="{StaticResource btTemplate}" Content="6" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit6}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnDigit5" Grid.Column="4" Grid.Row="2" Template="{StaticResource btTemplate}" Content="5" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit5}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnDigit4" Grid.Column="3" Grid.Row="2" Template="{StaticResource btTemplate}" Content="4" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit4}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnSub" Grid.Column="6" Grid.Row="2" Template="{StaticResource btTemplate}" Content="-" Margin="3"
+                    Command="{Binding Path=DataContext.BtnArithOpClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnSub}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnDigit1" Grid.Column="3" Grid.Row="3" Template="{StaticResource btTemplate}" Content="1" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit1}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnDigit2" Grid.Column="4" Grid.Row="3" Template="{StaticResource btTemplate}" Content="2" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit2}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnDigit3" Grid.Column="5" Grid.Row="3" Template="{StaticResource btTemplate}" Content="3" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit3}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnSum" Grid.Column="6" Grid.Row="3" Template="{StaticResource btTemplate}" Content="+" Margin="3"
+                    Command="{Binding Path=DataContext.BtnArithOpClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnSum}" MinHeight="47" FontSize="18"/>
+                <Button x:Name="btnNegative" Grid.Column="3" Grid.Row="4" Template="{StaticResource btTemplate}" Content="+/-" Margin="3"
+                    Command="{Binding Path=DataContext.BtnNegativeClickCmd, ElementName=Calc}" FontSize="18"/>
+                <Button x:Name="btnDigit0" Grid.Column="4" Grid.Row="4" Template="{StaticResource btTemplate}" Content="0" Margin="3"
+                    Command="{Binding Path=DataContext.BtnDigitClickCmd, ElementName=Calc}" CommandParameter="{Binding ElementName=btnDigit0}" FontSize="18"/>
+                <Button x:Name="btnDot" Grid.Column="5" Grid.Row="4" Template="{StaticResource btTemplate}" Content="," Margin="3" 
+                    Command="{Binding Path=DataContext.BtnDotClickCmd, ElementName=Calc}" FontSize="18"/>
+                <Button x:Name="btnResult" Grid.Column="6" Grid.Row="4" Template="{StaticResource btTemplate}" Content="=" Margin="3"
+                        Command="{Binding Path=DataContext.BtnResultClickCmd, ElementName=Calc}" FontSize="18"/>
+            </Grid>
+        </StackPanel>
+
+        <TabControl Grid.Column="1" Grid.RowSpan="5" HorizontalAlignment="Left" Margin="5,30,0,0" VerticalAlignment="Top" Width="265" Height="519" FontSize="16">
+            <TabItem Header="Журнал" FontSize="16">
                 <ListBox ItemsSource="{Binding Path=Journal}"/>
             </TabItem>
-            <TabItem Header="Память">
+            <TabItem Header="Память" FontSize="16">
                 <ListBox ItemsSource="{Binding Path=MemoryList}"/>
             </TabItem>
         </TabControl>

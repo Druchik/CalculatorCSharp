@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace CalculatorCSharp.Cmds
 {
-    class BtnCubeClickCommand : CommandBase
+    class CosCommand : CommandBase
     {
         private Data _data;
         private int _pos = 0;
         private IList<string> _journal;
-        public BtnCubeClickCommand(Data data, IList<string> journal)
+        public CosCommand(Data data, IList<string> journal)
         {
             _data = data;
             _journal = journal;
@@ -20,9 +20,9 @@ namespace CalculatorCSharp.Cmds
         public override void Execute(object parameter)
         {
             _data.FirstNum = double.Parse(_data.Display);
-            _data.Display = Math.Pow(_data.FirstNum, 3).ToString();
-            _journal.Insert(_pos, $"cube({_data.FirstNum}) = {_data.Display}");
-            _data.Hint = $"cube({_data.FirstNum})";
+            _data.Display = Math.Cos(Math.PI * _data.FirstNum / 180).ToString();
+            _journal.Insert(_pos, $"cos({_data.FirstNum}) = {_data.Display}");
+            _data.Hint = $"cos({_data.FirstNum})";
             _data.IsResult = true;
         }
     }

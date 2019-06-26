@@ -6,6 +6,7 @@ namespace CalculatorCSharp.Cmds
     class BtnDigitClickCommand : CommandBase
     {
         private Data _data;
+        private int i = 0;
         public BtnDigitClickCommand(Data data)
         {
             _data = data;
@@ -18,7 +19,7 @@ namespace CalculatorCSharp.Cmds
 
             if (!_data.IsResult)
             {
-                if (_data.Display == "0")
+                if (_data.Display == $"{i}")
                 {
                     _data.Display = btn.Content.ToString();
                 }
@@ -29,6 +30,11 @@ namespace CalculatorCSharp.Cmds
             }
             else
             {
+                if (_data.IsError)
+                {
+                    _data.IsError = false;
+                    BtnCleanClickCommand.CleanData(_data, i);
+                }
                 _data.Display = btn.Content.ToString();
                 _data.IsResult = false;
             }

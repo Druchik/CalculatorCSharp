@@ -13,7 +13,7 @@ namespace CalculatorCSharp.Model
         string _arithOp;
         string _hint;
         bool _isResult = false;
-        
+        bool _isError = false;
 
         public double FirstNum
         {
@@ -63,6 +63,17 @@ namespace CalculatorCSharp.Model
             {
                 _isResult = value;
                 OnPropertyChanged("IsResult");
+            }
+        }
+
+        public bool IsError
+        {
+            get => _isError;
+
+            set
+            {
+                _isError = value;
+                OnPropertyChanged("IsError");
             }
         }
 

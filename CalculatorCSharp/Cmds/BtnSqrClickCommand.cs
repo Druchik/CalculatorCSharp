@@ -15,7 +15,7 @@ namespace CalculatorCSharp.Cmds
             _journal = journal;
         }
 
-        public override bool CanExecute(object parameter) => true;
+        public override bool CanExecute(object parameter) => !_data.IsError;
 
         public override void Execute(object parameter)
         {

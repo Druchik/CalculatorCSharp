@@ -69,9 +69,21 @@
     <Compile Include="Cmds\BtnSqrClickCommand.cs" />
     <Compile Include="Cmds\BtnSqrtClickCommand.cs" />
     <Compile Include="Cmds\ClearMemoryCommand.cs" />
+    <Compile Include="Cmds\CosCommand.cs" />
+    <Compile Include="Cmds\ExpInDegreeXCommand.cs" />
+    <Compile Include="Cmds\FactorialCommand.cs" />
+    <Compile Include="Cmds\IngCalcCommand.cs" />
+    <Compile Include="Cmds\LnCommand.cs" />
+    <Compile Include="Cmds\LogCommand.cs" />
     <Compile Include="Cmds\ReadMemoryCommand.cs" />
     <Compile Include="Cmds\SaveMemoryCommand.cs" />
+    <Compile Include="Cmds\SimpleCalcCommand.cs" />
+    <Compile Include="Cmds\SinCommand.cs" />
     <Compile Include="Cmds\SubMemoryCommand.cs" />
+    <Compile Include="Cmds\TanCommand.cs" />
+    <Compile Include="Cmds\TenInDegreeXCommand.cs" />
+    <Compile Include="Cmds\XInDegreeYCommand.cs" />
+    <Compile Include="Cmds\XInYRootCommand.cs" />
     <Compile Include="ViewModel\MainVM.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

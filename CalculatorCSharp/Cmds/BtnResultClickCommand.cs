@@ -1,6 +1,6 @@
 ﻿using CalculatorCSharp.Model;
+using System;
 using System.Collections.Generic;
-using System.Windows;
 
 namespace CalculatorCSharp.Cmds
 {
@@ -16,7 +16,7 @@ namespace CalculatorCSharp.Cmds
             _journal = journal;
         }
 
-        public override bool CanExecute(object parameter) => true;
+        public override bool CanExecute(object parameter) => !_data.IsError;
 
         public override void Execute(object parameter)
         {
@@ -30,6 +30,10 @@ namespace CalculatorCSharp.Cmds
                 Mul();
             else if (_data.ArithOp == "/")
                 Div();
+            else if (_data.ArithOp == "^")
+                Pow();
+            else if (_data.ArithOp == "yroot")
+                Root();
         }
 
         private void Sum()
@@ -40,7 +44,6 @@ namespace CalculatorCSharp.Cmds
             _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
             _data.FirstNum = _data.Result;
             _data.IsResult = true;
-
         }
 
         private void Sub()
@@ -61,18 +64,49 @@ namespace CalculatorCSharp.Cmds
             _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
             _data.FirstNum = _data.Result;
             _data.IsResult = true;
-
         }
 
         private void Div()
         {
             if (_data.Display == "0")
             {
-                MessageBox.Show("Деление на ноль!!!");
+                //MessageBox.Show("Деление на ноль!!!");
+                _data.Display = "Деление на ноль!";
+                _data.IsError = true;
+                _data.IsResult = true;
             }
             else
             {
                 _data.Result = _data.FirstNum / _data.SecNum;
+                _data.Display = _data.Result.ToString();
+                _data.Hint = "";
+                _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
+                _data.FirstNum = _data.Result;
+                _data.IsResult = true;
+            }
+        }
+
+        private void Pow()
+        {
+            _data.Result = Math.Pow(_data.FirstNum, _data.SecNum);
+            _data.Display = _data.Result.ToString();
+            _data.Hint = "";
+            _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
+            _data.FirstNum = _data.Result;
+            _data.IsResult = true;
+        }
+
+        private void Root()
+        {
+            if (_data.FirstNum < 0)
+            {
+                _data.Display = "Введены некорректные данные!";
+                _data.IsError = true;
+                _data.IsResult = true;
+            }
+            else
+            {
+                _data.Result = Math.Pow(_data.FirstNum, 1 / _data.SecNum);
                 _data.Display = _data.Result.ToString();
                 _data.Hint = "";
                 _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");

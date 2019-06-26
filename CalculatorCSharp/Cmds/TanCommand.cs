@@ -1,15 +1,15 @@
 ﻿using CalculatorCSharp.Model;
+using System;
 using System.Collections.Generic;
-using System.Windows;
 
 namespace CalculatorCSharp.Cmds
 {
-    class BtnDivXClickCommand : CommandBase
+    class TanCommand :CommandBase
     {
         private Data _data;
         private int _pos = 0;
         private IList<string> _journal;
-        public BtnDivXClickCommand(Data data, IList<string> journal)
+        public TanCommand(Data data, IList<string> journal)
         {
             _data = data;
             _journal = journal;
@@ -19,19 +19,18 @@ namespace CalculatorCSharp.Cmds
 
         public override void Execute(object parameter)
         {
-            if (_data.Display == "0")
+            _data.FirstNum = double.Parse(_data.Display);
+            if (_data.FirstNum % 90 == 0)
             {
-                //MessageBox.Show("Деление на ноль!!!");
-                _data.Display = "Деление на ноль!";
+                _data.Display = "Введены некорректные данные!";
                 _data.IsError = true;
                 _data.IsResult = true;
             }
             else
             {
-                _data.FirstNum = double.Parse(_data.Display);
-                _data.Display = (1 / _data.FirstNum).ToString();
-                _journal.Insert(_pos, $"1/{_data.FirstNum} = {_data.Display}");
-                _data.Hint = $"1/{_data.FirstNum}";
+                _data.Display = Math.Tan(Math.PI * _data.FirstNum / 180).ToString();
+                _journal.Insert(_pos, $"tan({_data.FirstNum}) = {_data.Display}");
+                _data.Hint = $"tan({_data.FirstNum})";
                 _data.IsResult = true;
             }
         }

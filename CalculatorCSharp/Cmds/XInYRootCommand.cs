@@ -2,10 +2,10 @@
 
 namespace CalculatorCSharp.Cmds
 {
-    class BtnPercentClickCommand : CommandBase
+    class XInYRootCommand : CommandBase
     {
         private Data _data;
-        public BtnPercentClickCommand(Data data)
+        public XInYRootCommand(Data data)
         {
             _data = data;
         }
@@ -14,8 +14,9 @@ namespace CalculatorCSharp.Cmds
 
         public override void Execute(object parameter)
         {
-            var percent = double.Parse(_data.Display);
-            _data.Display = (percent / 100).ToString();
+            _data.FirstNum = double.Parse(_data.Display);
+            _data.Hint = $"{_data.FirstNum} yroot";
+            _data.ArithOp = "yroot";
             _data.IsResult = true;
         }
     }

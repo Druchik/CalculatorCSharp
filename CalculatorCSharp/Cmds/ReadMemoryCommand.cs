@@ -15,7 +15,7 @@ namespace CalculatorCSharp.Cmds
             _memoryList = memoryList;
         }
 
-        public override bool CanExecute(object parameter) => _memoryList.Count > 0;
+        public override bool CanExecute(object parameter) => _memoryList.Count > 0 && !_data.IsError;
 
         public override void Execute(object parameter)
         {
