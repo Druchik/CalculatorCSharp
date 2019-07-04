@@ -7,10 +7,10 @@ namespace CalculatorCSharp.Model
     {
         string _display = "0";
         double _firstNum;
-        double _secNum;
+        double _secNum = 0;
         double _result;
         double _memory = 0;
-        string _arithOp;
+        string _arithOp = "";
         string _hint;
         bool _isResult = false;
         bool _isError = false;
@@ -112,10 +112,7 @@ namespace CalculatorCSharp.Model
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null) => 
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

@@ -116,7 +116,7 @@
 
                         <Button Grid.Column="0" Grid.Row="0" Template="{StaticResource btTemplate}" Content="x^y" Margin="3"
                             Command="{Binding Path=DataContext.XInDegreeYCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
-                        <Button Grid.Column="0" Grid.Row="1" Template="{StaticResource btTemplate}" Content="x√y" Margin="3"
+                        <Button Grid.Column="0" Grid.Row="1" Template="{StaticResource btTemplate}" Content="y√x" Margin="3"
                                 Command="{Binding Path=DataContext.XInYRootCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>
                         <Button Grid.Column="0" Grid.Row="2" Template="{StaticResource btTemplate}" Content="10^x" Margin="3"
                                 Command="{Binding Path=DataContext.TenInDegreeXCmd, ElementName=Calc}" MinHeight="47" FontSize="18" MinWidth="110"/>

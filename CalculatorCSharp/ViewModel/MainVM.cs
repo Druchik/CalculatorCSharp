@@ -129,12 +129,9 @@ namespace CalculatorCSharp.ViewModel
         private ICommand _xInYRootCommand = null;
         public ICommand XInYRootCmd => _xInYRootCommand ?? (_xInYRootCommand = new XInYRootCommand(Data));
 
-        
+
         #endregion
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null) => 
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

@@ -20,99 +20,61 @@ namespace CalculatorCSharp.Cmds
 
         public override void Execute(object parameter)
         {
-            if (!_data.IsResult)
+            if(_data.SecNum == 0)
+                _data.IsResult = false;
+            if (!_data.IsResult && !string.IsNullOrEmpty(_data.ArithOp))
                 _data.SecNum = double.Parse(_data.Display);
+            else
+                _data.FirstNum = double.Parse(_data.Display);
+            Result();
+        }
+
+        private void Result()
+        {
             if (_data.ArithOp == "+")
-                Sum();
+                _data.Result = _data.FirstNum + _data.SecNum;
             else if (_data.ArithOp == "-")
-                Sub();
+                _data.Result = _data.FirstNum - _data.SecNum;
             else if (_data.ArithOp == "*")
-                Mul();
+                _data.Result = _data.FirstNum * _data.SecNum;
             else if (_data.ArithOp == "/")
-                Div();
+            {
+                if (_data.Display == "0")
+                {
+                    _data.Display = "Деление на ноль!";
+                    _data.IsError = true;
+                    _data.IsResult = true;
+                    return;
+                }
+                else
+                    _data.Result = _data.FirstNum / _data.SecNum;
+            }
             else if (_data.ArithOp == "^")
-                Pow();
+                _data.Result = Math.Pow(_data.FirstNum, _data.SecNum);
             else if (_data.ArithOp == "yroot")
-                Root();
-        }
-
-        private void Sum()
-        {
-            _data.Result = _data.FirstNum + _data.SecNum;
-            _data.Display = _data.Result.ToString();
-            _data.Hint = "";
-            _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
-            _data.FirstNum = _data.Result;
-            _data.IsResult = true;
-        }
-
-        private void Sub()
-        {
-            _data.Result = _data.FirstNum - _data.SecNum;
-            _data.Display = _data.Result.ToString();
-            _data.Hint = "";
-            _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
-            _data.FirstNum = _data.Result;
-            _data.IsResult = true;
-        }
-
-        private void Mul()
-        {
-            _data.Result = _data.FirstNum * _data.SecNum;
-            _data.Display = _data.Result.ToString();
-            _data.Hint = "";
-            _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
-            _data.FirstNum = _data.Result;
-            _data.IsResult = true;
-        }
-
-        private void Div()
-        {
-            if (_data.Display == "0")
             {
-                //MessageBox.Show("Деление на ноль!!!");
-                _data.Display = "Деление на ноль!";
-                _data.IsError = true;
-                _data.IsResult = true;
+                if (_data.FirstNum < 0)
+                {
+                    _data.Display = "Введены некорректные данные!";
+                    _data.IsError = true;
+                    _data.IsResult = true;
+                    return;
+                }
+                else
+                    _data.Result = Math.Pow(_data.FirstNum, 1 / _data.SecNum);
             }
             else
             {
-                _data.Result = _data.FirstNum / _data.SecNum;
-                _data.Display = _data.Result.ToString();
-                _data.Hint = "";
-                _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
-                _data.FirstNum = _data.Result;
-                _data.IsResult = true;
+                _data.Result = _data.FirstNum;
             }
-        }
-
-        private void Pow()
-        {
-            _data.Result = Math.Pow(_data.FirstNum, _data.SecNum);
             _data.Display = _data.Result.ToString();
             _data.Hint = "";
-            _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
+            if(!string.IsNullOrEmpty(_data.ArithOp))
+                _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
+            else
+                _journal.Insert(_pos, $"{_data.FirstNum} = {_data.Result}");
             _data.FirstNum = _data.Result;
             _data.IsResult = true;
-        }
-
-        private void Root()
-        {
-            if (_data.FirstNum < 0)
-            {
-                _data.Display = "Введены некорректные данные!";
-                _data.IsError = true;
-                _data.IsResult = true;
-            }
-            else
-            {
-                _data.Result = Math.Pow(_data.FirstNum, 1 / _data.SecNum);
-                _data.Display = _data.Result.ToString();
-                _data.Hint = "";
-                _journal.Insert(_pos, $"{_data.FirstNum} {_data.ArithOp} {_data.SecNum} = {_data.Result}");
-                _data.FirstNum = _data.Result;
-                _data.IsResult = true;
-            }
         }
     }
 }
